@@ -1,0 +1,24 @@
+python script to modify stuff, in this case removes commas from numbers in the 8th column of the data file:
+###
+import csv
+
+www = open ("new.csv","w")
+
+with open("blah.csv") as fff:
+    s = csv.reader(fff,delimiter=',',quotechar='"')
+    for row in s:
+        row[7]=row[7].replace(",","").replace(" ","")
+        www.write(",".join(map(lambda x: "'"+x+"'",row))+"\n")
+
+
+
+www.close()
+####
+
+
+command line use of mysql:
+mysql -u cs4477222 -p cs4477222 #to login
+Enter password:
+
+import a file with a header:
+LOAD DATA LOCAL INFILE 'ACOA_Contracts_20140215173600.csv' INTO TABLE  `ACOA_contracts` FIELDS TERMINATED BY  ',' ENCLOSED BY  '"' ESCAPED BY  '\\' LINES TERMINATED BY  '\r\n' IGNORE 1 LINES;
